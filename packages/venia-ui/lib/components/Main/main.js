@@ -8,7 +8,6 @@ import Header from '../Header';
 import defaultClasses from './main.css';
 
 import Page from '../TestApp';
-import { NavigationAEM } from '../NavigationAEM';
 import aemClasses from './aem.css';
 
 const Main = props => {
@@ -23,15 +22,12 @@ const Main = props => {
     return (
         <main className={rootClass}>
             <Header />
-            {
-              aemModel && (
-              <div>
-                <h3 className={aemClasses.title}> We Retail Blog Page</h3>
-                <Page
-                  pagePath='/content/we-retail-journal/react/en/blog' />
-              </div>
-              )
-            }
+            {aemModel && (
+                <div>
+                    <h3 className={aemClasses.title}>WKDN Page</h3>
+                    <Page pagePath="/content/wknd-spa-react/us/en/home" />
+                </div>
+            )}
             <div className={pageClass}>{children}</div>
             <Footer />
         </main>

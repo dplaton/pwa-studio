@@ -1,0 +1,20 @@
+.carousel_root {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+}
+
+.carousel_item img {
+    max-width: 200px;
+}
+
+.image {
+    max-width: 640px;
+}
+.carousel_item h2 {
+    font-size: 1.2rem;
+}
+
+.carousel_item {
+    display: grid;
+    grid-template-rows: 1fr 1fr auto;
+}

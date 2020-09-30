@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { array, func, shape, string } from 'prop-types';
 
 import { useToasts } from '@magento/peregrine';
@@ -14,7 +14,7 @@ import ToastContainer from '../ToastContainer';
 import Icon from '../Icon';
 
 import { CustomModelClient } from './CustomModelClient';
-import { ModelManager } from "@adobe/aem-spa-page-model-manager";
+import { ModelManager } from '@adobe/aem-spa-page-model-manager';
 
 import {
     AlertCircle as AlertCircleIcon,
@@ -82,14 +82,15 @@ const App = props => {
 
     /* Fetch AEM model */
     const [aemModel, setAemModel] = useState();
-    const modelClient = new CustomModelClient('http://localhost:4502');
-    ModelManager.initialize({
-      modelClient,
-      path: '/content/we-retail-journal/react/en'
-    }).then((model) => {
-        setAemModel(model);
-    });
-
+    useEffect(() => {
+        const modelClient = new CustomModelClient('http://localhost:4502');
+        ModelManager.initialize({
+            modelClient,
+            path: '/content/wknd-spa-react/us/en/home'
+        }).then(model => {
+            setAemModel(model);
+        });
+    }, []);
 
     if (renderError) {
         return (
